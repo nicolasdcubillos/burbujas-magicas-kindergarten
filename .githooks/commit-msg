@@ -1,0 +1,62 @@
+#!/bin/sh
+set -eu
+
+if [ "$#" -ne 1 ] || [ ! -f "$1" ] || [ ! -r "$1" ]; then
+    echo "commit-msg: expected a readable commit message file" >&2
+    exit 1
+fi
+
+msg_file=$1
+tmp_file=$(mktemp "${msg_file}.copilot.XXXXXX") || exit 1
+trap 'rm -f -- "$tmp_file"' EXIT
+trap 'exit 1' HUP INT TERM
+
+# Keep the original permissions; publish only after the filter succeeds.
+cp -p -- "$msg_file" "$tmp_file"
+node - "$msg_file" "$tmp_file" <<'NODE'
+const fs = require('node:fs');
+const { spawnSync } = require('node:child_process');
+// Latin-1 gives a reversible byte mapping, including non-UTF-8 messages.
+const message = fs.readFileSync(process.argv[2]);
+const lines = message.toString('latin1').split(/(?<=\n)/);
+// Let Git recognize its configured comment prefix without rewriting the source.
+const cleaned = spawnSync('git', ['stripspace', '--strip-comments'], { input: message });
+if (cleaned.error) throw cleaned.error;
+if (cleaned.status !== 0) throw new Error(`commit-msg: ${cleaned.stderr.toString()}`);
+const content = cleaned.stdout.toString('latin1').split(/(?<=\n)/);
+const blank = /^[ \t]*(?:\r?\n)?$/;
+let end = content.length - 1;
+while (end >= 0 && blank.test(content[end])) end--;
+let start = end;
+while (start >= 0 && !blank.test(content[start])) start--;
+start++;
+
+let trailers = start <= end;
+let hasToken = false;
+for (let i = start; i <= end; i++) {
+  if (/^[A-Za-z0-9-]+[ \t]*:/.test(content[i])) {
+    hasToken = true;
+  } else if (!hasToken || !/^[ \t]+\S/.test(content[i])) {
+    trailers = false;
+    break;
+  }
+}
+const remove = new Set();
+const normalize = line => line.replace(/[ \t\r\n]+$/, '');
+let cursor = lines.length - 1;
+if (trailers) {
+  for (let i = end; i >= start; i--) {
+    while (cursor >= 0 && normalize(lines[cursor]) !== normalize(content[i])) cursor--;
+    if (cursor < 0) throw new Error('commit-msg: cannot locate original trailer block');
+    if (/^co-authored-by:[^\r\n]*copilot/i.test(content[i])) remove.add(cursor);
+    cursor--;
+  }
+}
+const filtered = lines.filter((line, i) => !remove.has(i)).join('');
+fs.writeFileSync(process.argv[3], Buffer.from(filtered, 'latin1'));
+NODE
+
+if cmp -s -- "$msg_file" "$tmp_file"; then
+    exit 0
+fi
+mv -f -- "$tmp_file" "$msg_file"
