@@ -21,8 +21,8 @@ Abre <http://localhost:8000>.
 
 ## Pendiente por confirmar con el jardín
 
-- Dirección (Carrera 7C #151-25, Cedro Golf; tomada de directorios públicos, otra fuente indica Calle 152 #7C-11: confirmar y corregir en `index.html` — hero, ubicación, contacto, footer, FAQ, mapa y JSON-LD), horarios.
-- Niveles y edades (1–6 años) son propuesta: confirmar nombres y rangos.
+- Dirección confirmada por el jardín: Calle 152 #7B-58, Bogotá (aparece en hero, ubicación, contacto, footer, FAQ, mapa y JSON-LD). Falta confirmar horarios.
+- Cursos confirmados: Soñadores 1, Soñadores 2, Exploradores (3 a 4 años), Aventureros y Preparatorio. Faltan las edades de los demás y las descripciones de cada curso (son propuesta).
 - Condiciones y porcentaje del descuento por pago anticipado del año (hoy solo se menciona, sin cifras).
 - Fotos reales (con autorización de las familias) para reemplazar/complementar las ilustraciones.
 - Revisar los textos de `index.html`: son propuestas genéricas, no datos oficiales.
