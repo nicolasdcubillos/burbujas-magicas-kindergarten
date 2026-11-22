@@ -39,6 +39,39 @@ p { margin: 0 0 1em; }
 .skip:focus { left: 8px; }
 :focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
 
+/* Topbar */
+.topbar { background: var(--red); color: #fff; font-weight: 700; font-size: .95rem; }
+.topbar-in { display: flex; justify-content: center; align-items: center; gap: 1rem; padding: .5rem 0; text-align: center; }
+.topbar p { margin: 0; }
+.topbar a { color: #fff; text-decoration: underline; white-space: nowrap; }
+.hero-loc { margin: 1.4rem 0 0; font-weight: 700; color: var(--ink); }
+
+/* Levels */
+.levels { padding: 1rem 0 5.5rem; }
+.levels-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 1.6rem; }
+.level { background: #fff; border-radius: var(--radius); padding: 1.6rem 1.2rem 1.4rem; box-shadow: var(--shadow); position: relative; overflow: hidden; text-align: center; }
+.level::before { content: ""; position: absolute; width: 110px; height: 110px; border-radius: 50%; top: -48px; right: -38px; background: var(--c); opacity: .22; }
+.level::after { content: ""; position: absolute; width: 46px; height: 46px; left: -16px; bottom: -16px; background: var(--c); opacity: .35; transform: rotate(45deg); border-radius: 10px; }
+.level p { margin: 0; font-size: .95rem; position: relative; z-index: 1; }
+.level h3 { position: relative; z-index: 1; }
+.age { display: inline-block; background: var(--c); color: #fff; font-weight: 800; font-size: .85rem; padding: .3rem .85rem; border-radius: 999px; margin-bottom: .9rem; position: relative; z-index: 1; }
+.l1 { --c: var(--red); } .l2 { --c: var(--navy); } .l3 { --c: var(--teal-dark); } .l4 { --c: #d99a00; } .l5 { --c: var(--red); }
+.muted { opacity: .8; font-weight: 600; }
+
+/* Promo */
+.promo { display: flex; align-items: center; gap: 1.4rem; background: var(--sun); color: var(--ink); border-radius: var(--radius); padding: 1.6rem 2rem; margin: 0 auto 2.2rem; max-width: 900px; box-shadow: 0 14px 40px rgba(0, 0, 0, .25); }
+.promo h3 { color: var(--ink); margin-bottom: .3em; }
+.promo p { margin: 0; font-weight: 600; }
+.promo-ico { font-size: 3rem; line-height: 1; }
+.promo .btn { flex: none; }
+
+/* Location */
+.location { padding: 5rem 0 3rem; }
+.loc-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: center; }
+.map { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 8px solid #fff; background: #fff; }
+.map iframe { display: block; width: 100%; height: 380px; border: 0; }
+.location .contact-list .ico-e { align-self: flex-start; }
+
 /* Header */
 .header { position: sticky; top: 0; z-index: 50; background: rgba(255, 248, 236, .92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(53, 72, 128, .1); }
 .header-in { display: flex; align-items: center; justify-content: space-between; padding: .55rem 0; gap: 1rem; }
@@ -172,6 +205,7 @@ details p { margin: .8rem 0 0; }
 @media (max-width: 960px) {
   .values { grid-template-columns: repeat(2, 1fr); }
   .grid3 { grid-template-columns: repeat(2, 1fr); }
+  .levels-grid { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 820px) {
   .burger { display: block; }
@@ -179,13 +213,17 @@ details p { margin: .8rem 0 0; }
   .nav.open { display: flex; }
   .nav a { padding: .8rem 0; border-bottom: 1px solid rgba(53, 72, 128, .1); }
   .nav .btn { margin-top: .8rem; justify-content: center; border: 0; }
-  .hero-grid, .about-grid, .day-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+  .hero-grid, .about-grid, .day-grid, .contact-grid, .loc-grid { grid-template-columns: minmax(0, 1fr); }
+  .promo { flex-direction: column; text-align: center; padding: 1.6rem 1.3rem; }
+  .topbar-in a { display: none; }
   .hero { padding-top: 2rem; }
   .hero-art { max-width: 460px; margin-inline: auto; }
   .day-art { order: 2; }
 }
 @media (max-width: 600px) {
-  .values, .grid3 { grid-template-columns: 1fr; }
+  .values, .grid3, .levels-grid { grid-template-columns: 1fr; }
+  .topbar { font-size: .85rem; }
+  .map iframe { height: 300px; }
   .brand { font-size: 1rem; }
   .btn { width: 100%; justify-content: center; }
   .btn-sm { width: auto; }

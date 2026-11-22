@@ -14,14 +14,16 @@ Abre <http://localhost:8000>.
 
 ## Estructura
 
-- `index.html` — página única (secciones: inicio, nosotros, qué aprenden, un día aquí, matrículas, preguntas, contacto).
+- `index.html` — página única (secciones: inicio, nosotros, niveles, qué aprenden, un día aquí, matrículas, ubicación, preguntas, contacto).
 - `assets/css/styles.css` — estilos y paleta de marca (variables `--teal`, `--red`, `--navy`).
 - `assets/js/main.js` — menú móvil y animaciones al hacer scroll.
 - `assets/img/` — logo e ilustraciones optimizadas a partir del branding original.
 
 ## Pendiente por confirmar con el jardín
 
-- Dirección y mapa, horarios y edades/niveles.
+- Dirección (Carrera 7C #151-25, Cedro Golf; tomada de directorios públicos, otra fuente indica Calle 152 #7C-11: confirmar y corregir en `index.html` — hero, ubicación, contacto, footer, FAQ, mapa y JSON-LD), horarios.
+- Niveles y edades (1–6 años) son propuesta: confirmar nombres y rangos.
+- Condiciones y porcentaje del descuento por pago anticipado del año (hoy solo se menciona, sin cifras).
 - Fotos reales (con autorización de las familias) para reemplazar/complementar las ilustraciones.
 - Revisar los textos de `index.html`: son propuestas genéricas, no datos oficiales.
 - Si se usa un dominio propio, actualizar `canonical`, `og:*`, `robots.txt` y `sitemap.xml`.
