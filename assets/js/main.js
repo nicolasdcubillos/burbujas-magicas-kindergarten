@@ -30,4 +30,19 @@ if ('IntersectionObserver' in window) {
   items.forEach((el) => el.classList.add('in'));
 }
 
+const coupon = document.getElementById('cupon');
+const couponEnds = new Date('2026-12-17T00:00:00-05:00');
+if (coupon && typeof coupon.showModal === 'function' && new Date() < couponEnds) {
+  const seen = () => { try { return sessionStorage.getItem('cupon-visto'); } catch (e) { return null; } };
+  const close = () => {
+    try { sessionStorage.setItem('cupon-visto', '1'); } catch (e) { /* private mode */ }
+    coupon.close();
+  };
+  coupon.querySelector('[data-close]').addEventListener('click', close);
+  coupon.querySelector('.btn').addEventListener('click', close);
+  coupon.addEventListener('click', (e) => { if (e.target === coupon) close(); });
+  coupon.addEventListener('cancel', () => { try { sessionStorage.setItem('cupon-visto', '1'); } catch (e) { /* noop */ } });
+  if (!seen()) setTimeout(() => coupon.showModal(), 1200);
+}
+
 document.getElementById('year').textContent = new Date().getFullYear();
