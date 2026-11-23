@@ -20,6 +20,7 @@ Abre <http://localhost:8000>.
 - `assets/img/` — logo e ilustraciones optimizadas a partir del branding original.
 - `docs/PERFIL-JARDIN.md` — perfil del jardín (datos confirmados, propuestas y pendientes) para que personas y agentes generen contenido sin inventar datos.
 - `docs/presentacion-burbujas-magicas.pdf` — presentación del jardín (16:9). Fuente en `docs/presentacion/`; se regenera con `python docs/presentacion/build.py` (requiere Playwright).
+- `.github/skills/impeccable/`, `.github/agents/`, `.github/hooks/impeccable.json` — skill de diseño [Impeccable](https://github.com/pbakaus/impeccable) con un hook que revisa cada archivo de UI que edita el agente. Para revisar a mano: `npx impeccable detect index.html assets/css/styles.css`. Se actualiza con `npx impeccable update`.
 
 ## Pendiente por confirmar con el jardín
 
