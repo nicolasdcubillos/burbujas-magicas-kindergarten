@@ -18,6 +18,8 @@ Abre <http://localhost:8000>.
 - `assets/css/styles.css` — estilos y paleta de marca (variables `--teal`, `--red`, `--navy`).
 - `assets/js/main.js` — menú móvil y animaciones al hacer scroll.
 - `assets/img/` — logo e ilustraciones optimizadas a partir del branding original.
+- `docs/PERFIL-JARDIN.md` — perfil del jardín (datos confirmados, propuestas y pendientes) para que personas y agentes generen contenido sin inventar datos.
+- `docs/presentacion-burbujas-magicas.pdf` — presentación del jardín (16:9). Fuente en `docs/presentacion/`; se regenera con `python docs/presentacion/build.py` (requiere Playwright).
 
 ## Pendiente por confirmar con el jardín
 
