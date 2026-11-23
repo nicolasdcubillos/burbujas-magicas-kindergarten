@@ -233,26 +233,26 @@ details p { margin: .8rem 0 0; }
 .coupon-dlg::backdrop { background: rgba(30, 42, 85, .6); }
 .coupon-dlg[open] { animation: coupon-in .35s ease-out; }
 @keyframes coupon-in { from { opacity: 0; transform: translateY(18px) scale(.97); } }
-.coupon { --stub: 170px; position: relative; display: grid; grid-template-columns: 1fr var(--stub); background: var(--sun); border-radius: 22px;
+.coupon { --stub: 170px; position: relative; display: grid; grid-template-columns: 1fr var(--stub); background: var(--red); border-radius: 22px;
   -webkit-mask: radial-gradient(circle 14px at calc(100% - var(--stub)) 0, #0000 97%, #000) top / 100% 51% no-repeat, radial-gradient(circle 14px at calc(100% - var(--stub)) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat;
   mask: radial-gradient(circle 14px at calc(100% - var(--stub)) 0, #0000 97%, #000) top / 100% 51% no-repeat, radial-gradient(circle 14px at calc(100% - var(--stub)) 100%, #0000 97%, #000) bottom / 100% 51% no-repeat; }
 .coupon-dlg { filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .35)); }
-.coupon-main { background: var(--cream); margin: 10px 0 10px 10px; padding: 1.6rem 1.6rem 1.6rem; border-radius: 14px 0 0 14px; border: 2px dashed var(--navy); border-right: 0; }
+.coupon-main { background: var(--cream); margin: 10px 0 10px 10px; padding: 1.6rem 1.6rem 1.6rem; border-radius: 14px 0 0 14px; border: 2px dashed var(--red-dark); border-right: 0; }
 .coupon-logo { width: 64px; height: 64px; margin-bottom: .6rem; border-radius: 50%; }
-.coupon-kicker { font-size: .8rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin-bottom: .3rem; }
-.coupon h2 { font-size: clamp(2rem, 6vw, 2.7rem); margin-bottom: .4rem; color: var(--navy); }
+.coupon-kicker { font-size: .8rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #1f7a4d; margin-bottom: .3rem; }
+.coupon h2 { font-size: clamp(1.8rem, 5.5vw, 2.4rem); margin-bottom: .4rem; color: var(--navy); }
 .coupon-txt { font-size: 1rem; line-height: 1.5; margin-bottom: 1.1rem; }
-.coupon-stub { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1rem; margin: 10px 10px 10px 0; border: 2px dashed var(--navy); border-left: 2px dashed var(--navy); border-radius: 0 14px 14px 0; color: var(--navy); font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; }
-.coupon-stub b { font-family: var(--font-head); font-size: 4.6rem; line-height: 1; letter-spacing: 0; color: var(--red); }
+.coupon-stub { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 1rem; margin: 10px 10px 10px 0; border: 2px dashed rgba(255, 255, 255, .85); border-radius: 0 14px 14px 0; color: #fff; background: #1f7a4d radial-gradient(circle, rgba(255, 255, 255, .35) 1.5px, transparent 2px) 0 0 / 22px 22px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: .85rem; }
+.coupon-stub b { font-family: var(--font-head); font-size: 2.3rem; line-height: 1.05; letter-spacing: 0; color: var(--sun); margin-bottom: .5rem; }
 .coupon-x { position: absolute; top: 16px; right: calc(var(--stub) + 14px); z-index: 2; width: 34px; height: 34px; border: 0; border-radius: 50%; background: rgba(53, 72, 128, .1); color: var(--navy); font-size: 1.5rem; line-height: 1; cursor: pointer; }
 .coupon-x:hover { background: rgba(53, 72, 128, .2); }
 @media (max-width: 560px) {
-  .coupon { --stub: 108px; grid-template-columns: 1fr; grid-template-rows: auto var(--stub);
+  .coupon { --stub: 96px; grid-template-columns: 1fr; grid-template-rows: auto var(--stub);
     -webkit-mask: radial-gradient(circle 14px at 0 calc(100% - var(--stub)), #0000 97%, #000) left / 51% 100% no-repeat, radial-gradient(circle 14px at 100% calc(100% - var(--stub)), #0000 97%, #000) right / 51% 100% no-repeat;
     mask: radial-gradient(circle 14px at 0 calc(100% - var(--stub)), #0000 97%, #000) left / 51% 100% no-repeat, radial-gradient(circle 14px at 100% calc(100% - var(--stub)), #0000 97%, #000) right / 51% 100% no-repeat; }
-  .coupon-main { margin: 10px 10px 0; border-radius: 14px 14px 0 0; border: 2px dashed var(--navy); border-bottom: 0; padding: 1.3rem; }
-  .coupon-stub { margin: 0 10px 10px; border-radius: 0 0 14px 14px; flex-direction: row; gap: .6rem; padding: .5rem; }
-  .coupon-stub b { font-size: 3.2rem; }
+  .coupon-main { margin: 10px 10px 0; border-radius: 14px 14px 0 0; border: 2px dashed var(--red-dark); border-bottom: 0; padding: 1.3rem; }
+  .coupon-stub { margin: 0 10px 10px; border-radius: 0 0 14px 14px; flex-direction: row; flex-wrap: wrap; gap: .1rem .6rem; padding: .5rem; }
+  .coupon-stub b { font-size: 1.9rem; margin: 0; }
   .coupon-x { right: 22px; }
 }
 

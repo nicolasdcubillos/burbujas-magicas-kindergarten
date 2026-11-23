@@ -31,7 +31,7 @@ if ('IntersectionObserver' in window) {
 }
 
 const coupon = document.getElementById('cupon');
-const couponEnds = new Date('2026-12-17T00:00:00-05:00');
+const couponEnds = new Date('2026-12-12T00:00:00-05:00');
 if (coupon && typeof coupon.showModal === 'function' && new Date() < couponEnds) {
   const seen = () => { try { return sessionStorage.getItem('cupon-visto'); } catch (e) { return null; } };
   const close = () => {
